@@ -6,6 +6,8 @@
 ```shell script
 # 创建一个angular 应用程序, 使用--prefix 很重要,确保angular应用程序不是同一个名称
 ng new main-app --routing --prefix main-app
+# 选择一种层叠样式表
+# ? Which stylesheet format would you like to use? Less
 cd main-app
 
 # 添加 ng-zorro 组件库
@@ -29,6 +31,8 @@ ng add ng-zorro-antd
 ng add single-spa-angular
 # 您的应用程序是否使用Angular路由？yes
 # ? Does your application use Angular routing? Yes
+# 您想在哪个端口运行项目 4201 根据自己喜好
+# ? What port should your project run on? 4201
 # 您的应用程序是否使用浏览器动画模块？yes
 # ? Does your application use BrowserAnimationsModule? Yes
 ```
@@ -47,7 +51,11 @@ npm i @angular-builders/custom-webpack --save
 ```shell script
 npm i single-spa --save
 ```
+```shell script
+npm audit fix
+```
 - 非首次运行直接执行
 ```shell script
 npm run serve:single-spa:main-app
 ```
+
