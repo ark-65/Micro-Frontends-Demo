@@ -26,7 +26,7 @@ ng add ng-zorro-antd
 # ? Choose your locale code: zh_CN
 # 是否直接创建组件 第一次不创建  选择blank (空白页面) 第二次可选 sidemenu 菜单页面
 # ? Choose template to create project: blank
-
+__
 # 添加 single-spa 微前端插件
 ng add single-spa-angular
 # 您的应用程序是否使用Angular路由？yes
@@ -44,7 +44,7 @@ ng add single-spa-angular
 #### 运行
 - <span style="color: red">首次运行会出现</span> `Cannot find module '@angular-builders/custom-webpack/package.json`
 ```shell script
-npm i @angular-builders/custom-webpack --save
+npm i @angular-builders/custom-webpack
 ```
 - <span style="color: red">ERROR in The target entry-point "single-spa-angular" has missing dependencies:</span>
    - <span style="color: red">single-spa</span>

@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build:single-spa:main-app": "ng build main-app --prod",
+    "build:test:single-spa:main-app": "ng build main-app --test",
     "serve:single-spa:main-app": "ng s --project main-app --disable-host-check --port 4201 --live-reload false"
   },
   "private": true,
@@ -40,6 +41,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
-    "typescript": "~4.2.3"
+    "typescript": "~4.2.3",
+    "prettier": "^2.3.2"
   }
 }
