@@ -1,6 +1,6 @@
 ## 环境
  - node >= 14.15.4
- - @angular/cli >= 12
+ - @angular/cli = 11
  - angular = 11
 ### 添加一个新的微应用 add new modle
 
