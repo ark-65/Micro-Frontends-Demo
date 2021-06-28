@@ -1,13 +1,22 @@
 ## 环境
  - node >= 14.15.4
- - @angular/cli >= 12
+ - @angular/cli = 11
+ - angular = 11
 ### 添加一个新的微应用 add new modle
 
 ```shell script
 # 创建一个angular 应用程序, 使用--prefix 很重要,确保angular应用程序不是同一个名称
 ng new main-app --routing --prefix main-app
+# 是否要在工作区中执行更严格的类型检查和更严格的捆绑预算？
+# 此设置有助于提高可维护性并提前捕获错误。
+# 有关详细信息，请参阅https://angular.io/stric 
+# ? Do you want to enforce stricter type checking and stricter bundle budgets in the workspace?
+# This setting helps improve maintainability and catch bugs ahead of time.
+# For more information, see https://angular.io/strict Yes
+
 # 选择一种层叠样式表
 # ? Which stylesheet format would you like to use? Less
+
 cd main-app
 
 # 添加 ng-zorro 组件库
