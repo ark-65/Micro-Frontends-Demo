@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "http://10.0.120.205:8760/api",
+    "logLevel": "debug",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

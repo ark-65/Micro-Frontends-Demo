@@ -7,6 +7,9 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 @NgModule({
   declarations: [],
@@ -18,6 +21,9 @@ import { NzFormModule } from 'ng-zorro-antd/form';
     NzIconModule,
     NzCheckboxModule,
     NzFormModule,
+    NzLayoutModule,
+    NzMenuModule,
+    NzMessageModule,
   ],
 })
 export class NzComponentsModule {}

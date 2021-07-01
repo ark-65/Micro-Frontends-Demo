@@ -1,28 +1,71 @@
-<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
-  <nz-form-item>
-    <nz-form-control nzErrorTip="Please input your username!">
-      <nz-input-group nzPrefixIcon="user">
-        <input type="text" nz-input formControlName="userName" placeholder="Username" />
-      </nz-input-group>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-control nzErrorTip="Please input your Password!">
-      <nz-input-group nzPrefixIcon="lock">
-        <input type="password" nz-input formControlName="password" placeholder="Password" />
-      </nz-input-group>
-    </nz-form-control>
-  </nz-form-item>
-  <div nz-row class="login-form-margin">
-    <div nz-col [nzSpan]="12">
-      <label nz-checkbox formControlName="remember">
-        <span>Remember me</span>
-      </label>
+<div class="login-box">
+  <form
+    nz-form
+    [formGroup]="validateForm"
+    class="login-form"
+    (ngSubmit)="submitForm(validateForm.value)"
+  >
+    <nz-form-item>
+      <nz-form-control nzErrorTip="请输入手机号或用户名">
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            type="text"
+            nz-input
+            formControlName="account"
+            placeholder="手机号或用户名"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="请输入密码">
+        <nz-input-group nzPrefixIcon="lock">
+          <input
+            type="password"
+            nz-input
+            formControlName="password"
+            placeholder="输入密码"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="验证码不能为空">
+        <div nz-row>
+          <div nz-col [nzSpan]="18">
+            <nz-input-group nzPrefixIcon="security-scan">
+              <input
+                type="text"
+                nz-input
+                formControlName="code"
+                placeholder="输入验证码"
+              />
+            </nz-input-group>
+          </div>
+          <div nz-col class="captcha-box" [nzSpan]="6">
+            <img (click)="getCaptcha()" [src]="imageCaptchaSrc" />
+          </div>
+        </div>
+      </nz-form-control>
+    </nz-form-item>
+    <div nz-row class="login-form-margin">
+      <div nz-col [nzSpan]="12">
+        <!--        <label nz-checkbox formControlName="remember">-->
+        <!--          <span>记住密码</span>-->
+        <!--        </label>-->
+      </div>
+      <div nz-col [nzSpan]="12">
+        <a class="login-form-forgot">忘记密码?</a>
+      </div>
     </div>
-    <div nz-col [nzSpan]="12">
-      <a class="login-form-forgot">Forgot password</a>
-    </div>
-  </div>
-  <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
-  Or <a> register now! </a>
-</form>
+    <button
+      nz-button
+      class="login-form-button login-form-margin"
+      [nzType]="'primary'"
+      [nzLoading]="loginLoading"
+    >
+      登录
+    </button>
+    Or <a> register now! </a>
+  </form>
+</div>

@@ -1,0 +1,95 @@
+<nz-layout class="app-layout">
+  <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <div class="sidebar-logo">
+      <a routerLink="/main/system">
+        <img src="/assets/images/logo.png" alt="logo" />
+        <!--        <h1>DDMP</h1>-->
+      </a>
+    </div>
+    <ul
+      nz-menu
+      nzTheme="dark"
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+    >
+      <ng-container
+        *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"
+      ></ng-container>
+      <ng-template #menuTpl let-menus>
+        <ng-container *ngFor="let menu of menus">
+          <li
+            *ngIf="!menu.children && menu.data.use"
+            nz-menu-item
+            nzMatchRouter
+            [nzPaddingLeft]="menu.data.level * 24"
+          >
+            <i nz-icon [nzType]="menu.data.icon" *ngIf="menu.data.icon"></i>
+            <a [routerLink]="menu.data.pathLink">{{ menu.data.title }}</a>
+          </li>
+          <li
+            nz-submenu
+            *ngIf="menu.children"
+            [nzPaddingLeft]="menu.data.level * 24"
+            [nzTitle]="menu.data.title"
+            [nzIcon]="menu.data.icon"
+          >
+            <ul>
+              <ng-container
+                *ngTemplateOutlet="
+                  menuTpl;
+                  context: { $implicit: menu.children }
+                "
+              ></ng-container>
+            </ul>
+          </li>
+        </ng-container>
+      </ng-template>
+
+      <!--      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">-->
+      <!--        <ul>-->
+      <!--          <li nz-menu-item nzMatchRouter>-->
+      <!--            <a routerLink="/home/welcome2">Welcome</a>-->
+      <!--          </li>-->
+      <!--          <li nz-menu-item nzMatchRouter>-->
+      <!--            <a routerLink="/home/subRouter2">Monitor</a>-->
+      <!--          </li>-->
+      <!--          <li nz-menu-item nzMatchRouter>-->
+      <!--            <a routerLink="/app2">Workplace</a>-->
+      <!--          </li>-->
+      <!--        </ul>-->
+      <!--      </li>-->
+      <!--      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">-->
+      <!--        <ul>-->
+      <!--          <li nz-menu-item nzMatchRouter>-->
+      <!--            <a>Basic Form</a>-->
+      <!--          </li>-->
+      <!--        </ul>-->
+      <!--      </li>-->
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <i
+            class="trigger"
+            nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          ></i>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
