@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
-  CanActivate,
+  CanActivate, Router,
   RouterStateSnapshot,
-  UrlTree,
+  UrlTree
 } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -12,6 +12,10 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuard implements CanActivate {
   newObj = Object.create(null);
+
+  constructor(private route: Router) {
+  }
+
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -28,11 +32,15 @@ export class AuthGuard implements CanActivate {
     const currentUrl = state.url.replace('/main', '');
     console.log(this.newObj[currentUrl]);
     const canActive = this.newObj[currentUrl].data.use;
-    if (canActive) {
-      return true;
-    } else {
+    if (!canActive) {
       return false;
+    } else {
+      const token = sessionStorage.getItem('token');
+      if (!token) {
+        this.route.navigate(['/main/login']);
+      }
     }
+    return true;
   }
   flattenObj(obj: object): void {
     for (const key of Object.keys(obj)) {

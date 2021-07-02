@@ -19,6 +19,7 @@ const routes: Routes = [
         data: {},
         children: customRoutes,
       },
+      {path: '', redirectTo: 'system', pathMatch: 'full'}
     ],
   },
   { path: '**', component: EmptyRouteComponent },

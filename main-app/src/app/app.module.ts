@@ -19,6 +19,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { WorkspaceComponent } from './pages/workspace/workspace.component';
 import { HomeComponent } from './pages/workspace/home/home.component';
 import { httpInterceptorProviders } from './http-interceptors';
+import { AppInitializerProvider } from './service/app-initializer.service';
 
 registerLocaleData(zh);
 
@@ -48,6 +49,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
   providers: [
     { provide: NZ_I18N, useValue: zh_CN },
     { provide: NZ_ICONS, useValue: icons },
+    AppInitializerProvider,
     httpInterceptorProviders,
   ],
   bootstrap: [AppComponent],

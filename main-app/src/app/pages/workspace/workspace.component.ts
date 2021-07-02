@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { WorkspaceService } from '../../service/workspace.service';
+import { WorkspaceService } from './workspace.service';
 import { SystemRoute } from '../../interface/workspace.state';
 
 import { customRoutes } from '../../app-routing/custom-routing';
+import { ThemeService } from '../../service/theme.service';
 
 @Component({
   selector: 'main-app-workspace',
@@ -14,7 +15,10 @@ export class WorkspaceComponent implements OnInit {
   noShowPath = ['userInformation'];
   menus = [];
 
-  constructor(private workspaceService: WorkspaceService) {}
+  constructor(
+    private workspaceService: WorkspaceService,
+    private themeService: ThemeService
+  ) {}
 
   ngOnInit(): void {
     // this.setRouter();
@@ -35,6 +39,11 @@ export class WorkspaceComponent implements OnInit {
       }
     });
     this.menus = systemMenus;
+  }
+
+  // 切换主题
+  toggleTheme(): void {
+    this.themeService.toggleTheme().then();
   }
   // setRouter(): void {
   //   const user = JSON.parse(String(sessionStorage.getItem('user')));

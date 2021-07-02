@@ -6,7 +6,6 @@ import { LoginVo, UsernameLogin } from '../../interface/login.state';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { AjaxResult } from '../../interface/ajax-result.state';
 import { Router, Routes } from '@angular/router';
-import { WorkspaceService } from '../../service/workspace.service';
 
 import { customRoutes } from '../../app-routing/custom-routing';
 
@@ -27,7 +26,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private workspaceService: WorkspaceService,
     private sanitizer: DomSanitizer,
     private msg: NzMessageService,
     private router: Router
@@ -72,7 +70,7 @@ export class LoginComponent implements OnInit {
   }
 
   getRoute(userId: string): void {
-    this.workspaceService.getUserRouter(userId).subscribe((resp) => {
+    this.authService.getUserRouter(userId).subscribe((resp) => {
       if (resp.code === 0) {
         const userRouter = resp.data;
         sessionStorage.setItem('userRouter', JSON.stringify(userRouter));

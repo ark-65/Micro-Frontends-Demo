@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { registerServer } from './api.state';
+import { byitAuthorityServer, registerServer } from './api.state';
 import { LoginVo, UsernameLogin } from '../interface/login.state';
 
 import { Md5 } from 'ts-md5/dist/md5';
 import { AjaxResult } from '../interface/ajax-result.state';
+import { SystemRoute } from '../interface/workspace.state';
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +40,12 @@ export class AuthService {
     data.password = Md5.hashStr(data.password);
     const url = `${registerServer}/register/p/login`;
     return this.http.post<AjaxResult<LoginVo>>(url, data);
+  }
+  // 获取路由
+  getUserRouter(userId: string): Observable<AjaxResult<SystemRoute[]>> {
+    return this.http.get<AjaxResult<SystemRoute[]>>(
+      `${byitAuthorityServer}/menu/router`
+    );
   }
   // 设置验证码key
   setCaptchaKey(key: string): void {
