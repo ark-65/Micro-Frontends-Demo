@@ -30,24 +30,7 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": [
-              "src/styles.less",
-              {
-                "input": "src/styles/default.less",
-                "bundleName": "default",
-                "inject": false
-              },
-              {
-                "input": "src/styles/dark.less",
-                "bundleName": "dark",
-                "inject": false
-              }
-            ],
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/styles/themes"
-              ]
-            },
+            "styles": ["./node_modules/ng-zorro-antd/ng-zorro-antd.min.css"],
             "scripts": [],
             "customWebpackConfig": {
               "path": "extra-webpack.config.js",

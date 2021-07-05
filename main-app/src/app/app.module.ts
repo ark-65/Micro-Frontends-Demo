@@ -49,7 +49,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
   providers: [
     { provide: NZ_I18N, useValue: zh_CN },
     { provide: NZ_ICONS, useValue: icons },
-    AppInitializerProvider,
+    // AppInitializerProvider,
     httpInterceptorProviders,
   ],
   bootstrap: [AppComponent],

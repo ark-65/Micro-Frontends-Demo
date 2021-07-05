@@ -16,12 +16,9 @@ export class WorkspaceComponent implements OnInit {
   menus = [];
 
   constructor(
-    private workspaceService: WorkspaceService,
-    private themeService: ThemeService
   ) {}
 
   ngOnInit(): void {
-    // this.setRouter();
     this.setMenu();
   }
 
@@ -29,10 +26,6 @@ export class WorkspaceComponent implements OnInit {
     const systemMenus = JSON.parse(
       String(sessionStorage.getItem('systemMenu'))
     );
-    console.log(systemMenus);
-    // this.menus = systemMenus.filter(
-    //   (item: { path: string }) => !this.noShowPath.includes(item.path)
-    // );
     systemMenus.map((item: { data: { title: string; use: boolean } }) => {
       if (item.data.title === '用户信息') {
         item.data.use = false;
@@ -42,9 +35,9 @@ export class WorkspaceComponent implements OnInit {
   }
 
   // 切换主题
-  toggleTheme(): void {
-    this.themeService.toggleTheme().then();
-  }
+  // toggleTheme(): void {
+  //   this.themeService.toggleTheme().then();
+  // }
   // setRouter(): void {
   //   const user = JSON.parse(String(sessionStorage.getItem('user')));
   //   console.log(user);

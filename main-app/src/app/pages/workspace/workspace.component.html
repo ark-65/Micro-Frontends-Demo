@@ -30,7 +30,9 @@
             [nzPaddingLeft]="menu.data.level * 24"
           >
             <i nz-icon [nzType]="menu.data.icon" *ngIf="menu.data.icon"></i>
-            <a [routerLink]="menu.data.pathLink">{{ menu.data.title }}</a>
+            <span>
+              <a [routerLink]="menu.data.pathLink">{{ menu.data.title }}</a>
+            </span>
           </li>
           <li
             nz-submenu
@@ -83,9 +85,9 @@
             [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
           ></i>
         </span>
-        <span class="header-trigger" (click)="toggleTheme()">
-          <i class="trigger" nz-icon nzType="skin" nzTheme="outline"></i>
-        </span>
+<!--        <span class="header-trigger" (click)="toggleTheme()">-->
+<!--          <i class="trigger" nz-icon nzType="skin" nzTheme="outline"></i>-->
+<!--        </span>-->
       </div>
     </nz-header>
     <nz-content>
